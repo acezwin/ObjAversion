@@ -209,6 +209,12 @@ def draw_bounding_box_on_image(image,
                (left, top)],
               width=thickness,
               fill=color)
+    draw.line([(320, 480), (640, 0),
+               (left, top)],
+              width=thickness)
+    draw.line([(320, 480), (0, 0),
+               (left, top)],
+              width=thickness)
   try:
     font = ImageFont.truetype('arial.ttf', 24)
   except IOError:
@@ -908,6 +914,16 @@ def visualize_boxes_and_labels_on_image_array(
         thickness=0 if skip_boxes else line_thickness,
         display_str_list=box_to_display_str_map[box],
         use_normalized_coordinates=use_normalized_coordinates)
+    # draw_bounding_box_on_image_array(
+    #     image,
+    #     0,
+    #     640,
+    #     480,
+    #     320,
+    #     color=color,
+    #     thickness=0 if skip_boxes else line_thickness,
+    #     display_str_list=box_to_display_str_map[box],
+    #     use_normalized_coordinates=use_normalized_coordinates)
     if keypoints is not None:
       draw_keypoints_on_image_array(
           image,
